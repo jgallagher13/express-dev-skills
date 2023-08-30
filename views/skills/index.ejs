@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Skills</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-    <h1>Developer Skills</h1>
+<%- include('../partials/header') %>
+
      <ul>
        <% skills.forEach(function(skill) { %>
          <li>
+          <form action="/skills/<%= skill.id %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button type="submit">X</button>
+          </form>
           <a href="/skills/<%= skill.id %>"><%= skill.skill %></a>
              - 
            <%= skill.done ? 'acquired' : 'in progress' %>
          </li>
        <% }); %>
      </ul>
-</body>
-</html>
+     <a href="/skills/new">Add Skill</a>
+
+<%- include('../partials/footer') %>
